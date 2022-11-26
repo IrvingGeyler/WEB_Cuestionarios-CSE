@@ -1,0 +1,7 @@
+Para evitar el mostrar los datos de la base de datos remota 
+crear un archivo php en la raiz llamado configDB con los siguientes datos
+
+define ("SERVER",SERVER);
+define("USUARIO",Usuario);
+define("CONTRASEÑA",contraseña);
+define("BASEDATOS",base de datos);
