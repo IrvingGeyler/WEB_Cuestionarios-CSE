@@ -7,7 +7,7 @@ include_once "Controladores/Paciente_controlador.php";
 $ControlPaciente = new Paciente_Controlador();
 
 if ($_POST) {
-    $ControlPaciente->registrar();
+    $ControlPaciente->registrar_Paciente();
 }
 
 include_once "layouts/head_pagina.php";
@@ -47,8 +47,8 @@ include_once "layouts/head_pagina.php";
         </select><br>
         <input type="text" name="ocupacion" placeholder="Ocupación"><br>
         <input type="text" name="usuario" placeholder="Nombre de usuario" required><br>
-        <input type="password" name="contraseñaNuevo" placeholder="Contraseña" required><br>
-        <input type="password" name="confirmaContraseña" placeholder="Confirmar contraseña" required><br>
+        <input type="password" name="contraseniaNuevo" placeholder="Contraseña" required><br>
+        <input type="password" name="confirmaContrasenia" placeholder="Confirmar contraseña" required><br>
         <input type="submit" value="Registrarse">
     </form>
     <a href="index.php"><button>Volver al inicio</button></a>

@@ -144,7 +144,6 @@ class Paciente_Modelo
 
         if ($registro) {
             $idPaciente = $this->login($this->getUsuario(),$this->getContraseña());
-           
         }
         return  $idPaciente;
     }
@@ -160,13 +159,10 @@ class Paciente_Modelo
         $idEncontrado = false;
         $sql = "SELECT * FROM pacientes WHERE usuario = '$usuario' AND contraseña ='$contraseña'";
         $login = $this->baseDatos->query($sql);
-
         if ($login && $login->num_rows == 1) {
             $datosPaciente = mysqli_fetch_array($login);
-
            $idEncontrado = $datosPaciente[0];
         }
-
         return $idEncontrado;
     }
 }

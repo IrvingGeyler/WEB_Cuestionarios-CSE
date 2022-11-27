@@ -79,12 +79,15 @@ class Administrador_Modelo
 
 
     //funcion para registrar a un administrador
-    public function guardarAdmin() {
-       
+    public function guardar_Admin() {
+        $guardado = false;
+        $sql = "INSERT INTO administradores VALUES('{$this->getPrimerNombre()}','{$this->getApellidoPaterno()}','{$this->getUsuario()}','{$this->getContraseña()}')";
+        $guardado = $this->baseDatos->query($sql);
+        return $guardado;
     }
 
 
-
+ 
 
     //Funcion para logear al administrador
     public function login($usuario, $contraseña)
