@@ -84,14 +84,5 @@ class Paciente_Controlador
         }
     }
 
-    /**
-     * Funcion para la cerrar sesion de un paciente
-     */
-    public function logout_Paciente()
-    {
-        unset($_SESSION['Paciente']);
-        unset($_SESSION['IdPaciente']);
-        session_destroy();
-        header("Location:" . HOME . "");
-    }
+
 }

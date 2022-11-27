@@ -14,23 +14,25 @@ class Administrador_Controlador
      */
 
     public function registrar_Admin()
-    {
+    {   
+        $conseguido = false;
         if (isset($_POST)) { // se recibe algo por post
 
             $nombre   = isset($_POST['nombre'])   ? $_POST['nombre']   : false;
-            $email    = isset($_POST['email'])    ? $_POST['email']    : false;
-            $password = isset($_POST['password']) ? $_POST['password'] : false;
+            $apellido    = isset($_POST['apellido'])    ? $_POST['usuario']    : false;
+            $usuario    = isset($_POST['usuario'])    ? $_POST['usuario']    : false;
+            $password = isset($_POST['contrasenia']) ? $_POST['contrasenia'] : false;
 
-            if ($nombre && $email && $password) {
-               // $usuario = new Usuario();
-               // $usuario->setNombre_usuario($nombre);
-               // $usuario->setEmail_usuario($email);
-               // $usuario->setPassword_usuario($password);
-               // $save = $usuario->save();
-               // if ($save) {
-                //}
+            if ( $nombre && $apellido && $usuario && $password) {
+               $nuevoAdmin = new Administrador_Modelo();
+               $nuevoAdmin->setPrimerNombre($nombre);
+               $nuevoAdmin->setApellidoPaterno($apellido);
+               $nuevoAdmin->setUsuario($usuario);
+               $nuevoAdmin->setContraseña($password);
+               $conseguido = $nuevoAdmin->guardar_Admin(); //obtner el resultado
             }
         }
+        return $conseguido;
     }
 
 
@@ -66,15 +68,4 @@ class Administrador_Controlador
         }
     }
 
-
-    /**
-     * Funcion para la cerrar sesion de un administrador
-     */
-    public function logout_Admin()
-    {
-        unset($_SESSION['Admin']);
-        unset($_SESSION['IdAdmin']);
-        session_destroy();
-        header("Location:" . HOME . "");
-    }
 }
