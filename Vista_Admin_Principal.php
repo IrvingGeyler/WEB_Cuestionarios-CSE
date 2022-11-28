@@ -7,6 +7,7 @@ if (!isset($_SESSION['Admin'])) { //Si nunca se creado una sesion de admin
 }
 
 ?>
+<title>Administrador</title>
 </head>
 
 <body>

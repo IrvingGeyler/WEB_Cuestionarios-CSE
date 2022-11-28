@@ -16,7 +16,7 @@ if ($_SESSION['Paciente']) { //Si el de la sesion es un paciente
 
 include_once "layouts/head_pagina.php";
 ?>
-
+<title>Login paciente</title>
 </head>
 
 <body>

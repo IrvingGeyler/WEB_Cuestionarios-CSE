@@ -2,6 +2,7 @@
 session_start();
 include_once "layouts/head_pagina.php"; 
 ?>
+<title>Paciente</title>
 </head>
 <body>
 <a href="Proceso_logout_Usuarios.php?<?php echo 'User=Paciente' ?>"><button type="" >Cerrar Sesion</button> </a>

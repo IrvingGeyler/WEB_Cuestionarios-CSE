@@ -27,7 +27,7 @@ if ($_POST) {
 
 include_once "layouts/head_pagina.php";
 ?>
-
+<title>Registro de administrador</title>
 </head>
 
 

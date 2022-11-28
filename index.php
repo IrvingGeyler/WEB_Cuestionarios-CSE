@@ -3,9 +3,8 @@ session_start();
 session_destroy();
 include_once "layouts/head_pagina.php";
 ?>
-
+<title>Cuestionarios-CSE</title>
 </head>
-
 
 <body>
     <div id="Contenido">

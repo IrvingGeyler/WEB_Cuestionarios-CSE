@@ -14,7 +14,7 @@ if ($_SESSION['Admin']) { //Si el de la sesion es un admin
 
 include_once "layouts/head_pagina.php";
 ?>
-
+<title>Login de administrador</title>
 </head>
 
 <body>
