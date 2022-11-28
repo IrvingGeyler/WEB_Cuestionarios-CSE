@@ -25,7 +25,7 @@ if (!isset($_SESSION['Admin'])) { //Si nunca se creado una sesion de admin
     <div id="Contenido_admin">
 
         <div id="apartado_agregar_instrumento">
-            <a href="Proceso_logout_Usuarios.php?<?php echo 'User=Admin' ?>"><button type="">Cerrar Sesion</button> </a>
+            <a href="Vista_Instrumento_Creacion.php"><button type="">Crear instrumento</button> </a>
         </div>
 
         <div id="instrumentos_registrados">
