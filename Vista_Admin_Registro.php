@@ -16,7 +16,7 @@ if ($_POST) {
     if ($registroExitoso) {
         echo ' <script type="text/javaScript">
          alert("Administrador agregado");
-        window.location.href= "Vista_Principal_Admin.php";
+        window.location.href= "Vista_Admin_Principal.php";
          </script> ';
     } else {
         echo ' <script type="text/javaScript">
@@ -41,7 +41,7 @@ include_once "layouts/head_pagina.php";
         <input type="password" name="contrasenia_re" placeholder="Confirmar contraseña" required><br>
         <input type="submit" value="Crear Cuenta">
     </form>
-    <a href="Vista_Principal_Admin.php"><button>Cancelar</button></a>
+    <a href="Vista_Admin_Principal.php"><button>Cancelar</button></a>
 
 
     <?php

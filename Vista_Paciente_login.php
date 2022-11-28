@@ -11,7 +11,7 @@ if ($_POST) {
 
 
 if ($_SESSION['Paciente']) { //Si el de la sesion es un paciente
-    header('Location: Vista_Principal_Paciente.php');
+    header('Location: Vista_Paciente_Principal.php');
 }
 
 include_once "layouts/head_pagina.php";
@@ -31,7 +31,7 @@ include_once "layouts/head_pagina.php";
 
     <div>
         <a href='<?php HOME ?>index.php'><button>Regresar</button></a>
-        <p>¿Aun no posee un cuenta? <a href="Vista_Registro_Paciente.php">Registrarse</a></p>
+        <p>¿Aun no posee un cuenta? <a href="Vista_Paciente_Registro.php">Registrarse</a></p>
     </div>
 
 

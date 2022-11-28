@@ -9,7 +9,7 @@ if ($_POST) { //logear cuando se active el submit
 }
 
 if ($_SESSION['Admin']) { //Si el de la sesion es un admin
-    header('Location: Vista_Principal_Admin.php');
+    header('Location: Vista_Admin_Principal.php');
 }
 
 include_once "layouts/head_pagina.php";

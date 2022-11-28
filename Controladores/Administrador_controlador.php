@@ -54,17 +54,17 @@ class Administrador_Controlador
                 if ($IDAdmin !== -1) {
                     $_SESSION['Admin'] = true;
                     $_SESSION['IdAdmin'] = $IDAdmin;
-                    header('Location: Vista_Principal_Admin.php');
+                    header('Location: Vista_Admin_Principal.php');
                 } else {
-                    header("Location: Vista_login_Admin.php");
+                    header("Location: Vista_Admin_login.php");
                 }
             } else {
                 echo "Usuario incorrecto";
-                header("Location: Vista_login_Admin.php");
+                header("Location: Vista_Admin_login.php");
             }
         } else {
             echo "Usuario incorrecto";
-            header("Location: Vista_login_Admin.php");
+            header("Location: Vista_Admin_login.php");
         }
     }
 

@@ -45,9 +45,9 @@ class Paciente_Controlador
                 $_SESSION['Paciente'] = true;
                 $_SESSION['IdPaciente'] = $IDPaciente;
 
-                header('Location: Vista_Principal_Paciente.php');
+                header('Location: Vista_Paciente_Principal.php');
             } else {
-                header('Location: Vista_login_Paciente.php');
+                header('Location: Vista_Paciente_Registro.php');
             }
         }
     }
@@ -69,18 +69,18 @@ class Paciente_Controlador
                     $_SESSION['Paciente'] = true;
                     $_SESSION['IdPaciente'] = $IDPaciente;
 
-                    header('Location: Vista_Principal_Paciente.php');
+                    header('Location: Vista_Paciente_Principal.php');
                 } else {
                     echo "No existe el paciente";
-                    header("Location: Vista_login_Paciente.php");
+                    header("Location: Vista_Paciente_login.php");
                 }
             } else {
                 echo "Usuario incorrecto";
-                header("Location: Vista_login_Paciente.php");
+                header("Location: Vista_Paciente_login.php");
             }
         } else {
             echo "Usuario incorrecto";
-            header("Location: Vista_login_Paciente.php");
+            header("Location: Vista_Paciente_login.php");
         }
     }
 

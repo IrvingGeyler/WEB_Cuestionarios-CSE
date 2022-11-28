@@ -11,9 +11,9 @@ include_once "layouts/head_pagina.php";
     <div id="Contenido">
         <div id="Cont-cabecera">
             <!--Dirigir a los distintos logins-->
-            <a href='<?php HOME ?>Vista_login_Paciente.php'><button>Paciente</button></a> 
+            <a href='<?php HOME ?>Vista_Paciente_login.php'><button>Paciente</button></a> 
 
-            <a href='<?php HOME ?>Vista_login_Admin.php'><button>Administrador</button></a>
+            <a href='<?php HOME ?>Vista_Admin_login.php'><button>Administrador</button></a>
         </div>
 
         <div id="info-pagina">
