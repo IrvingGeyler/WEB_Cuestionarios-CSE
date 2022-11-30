@@ -1,11 +1,11 @@
 <?php
 session_start();
-include_once "layouts/head_pagina.php";
 
 if (!isset($_SESSION['Admin'])) { //Si nunca se creado una sesion de admin
     header("Location: index.php");
 }
 
+include_once "layouts/head_pagina.php";
 ?>
 <title>Administrador</title>
 </head>
@@ -20,7 +20,7 @@ if (!isset($_SESSION['Admin'])) { //Si nunca se creado una sesion de admin
 
     <div id="datos_admin">
 
-
+        
     </div>
 
     <div id="Contenido_admin">
@@ -41,6 +41,6 @@ if (!isset($_SESSION['Admin'])) { //Si nunca se creado una sesion de admin
     </div>
 
 
-    <?php
-    include_once "layouts/footer_pagina.php";
-    ?>
+<?php
+include_once "layouts/footer_pagina.php";
+?>

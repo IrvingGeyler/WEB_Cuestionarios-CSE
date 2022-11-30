@@ -10,7 +10,7 @@ class Administrador_Modelo
     private $usuario;
     private $contraseña;
     private $baseDatos;
-    private $Administrador; 
+    private $Administrador;
 
     //constructor
 
@@ -55,7 +55,6 @@ class Administrador_Modelo
         $this->primerNombre = $this->baseDatos->real_escape_string($Nombre);
     }
 
-
     function setApellidoPaterno($ApellidoPaterno)
     {
         $this->apellidoPaterno = $this->baseDatos->real_escape_string($ApellidoPaterno);
@@ -73,21 +72,23 @@ class Administrador_Modelo
 
 
     //Funcion para buscar la inforamacion del administrador
-    function getAdministrador(){
-
+    function getAdministrador()
+    {
     }
 
 
     //funcion para registrar a un administrador
-    public function guardar_Admin() {
+    public function guardar_Admin()
+    {
         $guardado = false;
-        $sql = "INSERT INTO administradores(primerNombre ,  apellidoPaterno , usuario,contraseña) VALUES('{$this->getPrimerNombre()}','{$this->getApellidoPaterno()}','{$this->getUsuario()}','{$this->getContraseña()}')";
+        $sql = "INSERT INTO administradores(primerNombre ,  apellidoPaterno , usuario,contraseña) VALUES
+         ('{$this->getPrimerNombre()}','{$this->getApellidoPaterno()}','{$this->getUsuario()}','{$this->getContraseña()}')";
         $guardado = $this->baseDatos->query($sql);
         return $guardado;
     }
 
 
- 
+
 
     //Funcion para logear al administrador
     public function login($usuario, $contraseña)
@@ -95,13 +96,11 @@ class Administrador_Modelo
         $idEncontrado = -1;
         $sql = "SELECT * FROM administradores WHERE usuario = '$usuario' AND contraseña ='$contraseña'";
         $login = $this->baseDatos->query($sql);
-
         if ($login && $login->num_rows == 1) {
             $datosAdmin = mysqli_fetch_array($login);
-           
             return $idEncontrado = $datosAdmin[0];
         }
-
         return $idEncontrado;
     }
 }
+?>

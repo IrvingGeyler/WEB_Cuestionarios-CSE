@@ -9,7 +9,6 @@ if ($_POST) {
     $ControlPaciente->login_Paciente();
 }
 
-
 if ($_SESSION['Paciente']) { //Si el de la sesion es un paciente
     header('Location: Vista_Paciente_Principal.php');
 }
@@ -35,6 +34,6 @@ include_once "layouts/head_pagina.php";
     </div>
 
 
-    <?php
-    include_once "layouts/footer_pagina.php";
-    ?>
+<?php
+include_once "layouts/footer_pagina.php";
+?>

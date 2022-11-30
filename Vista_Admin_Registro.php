@@ -1,15 +1,14 @@
 <?php
 session_start();
-error_reporting(0);
 
 include_once "Controladores/Administrador_controlador.php";
-
 $ControlAdmin = new Administrador_Controlador();
-$registroExitoso = false;
+
 if (!isset($_SESSION['Admin'])) { //Si nunca se creado una sesion de admin
-    header("Location: index.php");
+ header("Location: index.php");
 }
 
+$registroExitoso = false;
 if ($_POST) {
     $registroExitoso = $ControlAdmin->registrar_Admin();
 
@@ -19,7 +18,7 @@ if ($_POST) {
         window.location.href= "Vista_Admin_Principal.php";
          </script> ';
     } else {
-        echo ' <script type="text/javaScript">
+        echo '<script type="text/javaScript">
          alert("Fallo al agregar administrador");
          </script> ';
     }
@@ -44,6 +43,6 @@ include_once "layouts/head_pagina.php";
     <a href="Vista_Admin_Principal.php"><button>Cancelar</button></a>
 
 
-    <?php
-    include_once "layouts/footer_pagina.php";
-    ?>
+<?php
+include_once "layouts/footer_pagina.php";
+?>

@@ -2,7 +2,6 @@
 
 class Paciente_Modelo
 {
-
     //atributos
     private $idPaciente;
     private $primerNombre;
@@ -166,3 +165,4 @@ class Paciente_Modelo
         return $idEncontrado;
     }
 }
+?>

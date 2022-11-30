@@ -16,7 +16,7 @@ function logout_Paciente()
     unset($_SESSION['Paciente']);
     unset($_SESSION['IdPaciente']);
     session_destroy();
-    header("Location: index.php  ");
+    header("Location: index.php");
 }
 
 
@@ -25,3 +25,4 @@ if ($Usuario === 'Admin') {
 } else {
     logout_Paciente();
 }
+?>

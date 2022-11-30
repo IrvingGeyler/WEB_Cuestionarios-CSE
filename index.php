@@ -19,8 +19,6 @@ include_once "layouts/head_pagina.php";
             Informacion de la info-pagina
         </div>
 
-
     </div>
-</body>
 
 <?php include_once "layouts/footer_pagina.php"; ?>

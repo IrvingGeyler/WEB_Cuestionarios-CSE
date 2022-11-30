@@ -15,6 +15,7 @@ class Paciente_Controlador
      */
     public function registrar_Paciente()
     {
+        $RegistroFallido = -1;
         if (
             isset($_POST['nombreNuevo']) &&
             isset($_POST['apellidoPaterno']) &&
@@ -28,7 +29,6 @@ class Paciente_Controlador
         ) {
             $NuevoPaciente = new Paciente_Modelo();
             $nacimiento = date("Ymd", strtotime($_POST['Fecha_naci']));
-            //En tratamiento
             $NuevoPaciente->setNombre_Paciente($_POST['nombreNuevo']);
             $NuevoPaciente->setApellidoPaterno($_POST['apellidoPaterno']);
             $NuevoPaciente->setEstadoCivil($_POST['estadoCivil']);
@@ -41,10 +41,9 @@ class Paciente_Controlador
 
             $IDPaciente = $NuevoPaciente->registrar(); //registrar
 
-            if ($IDPaciente !== -1) {
+            if ($IDPaciente !== $RegistroFallido) {
                 $_SESSION['Paciente'] = true;
                 $_SESSION['IdPaciente'] = $IDPaciente;
-
                 header('Location: Vista_Paciente_Principal.php');
             } else {
                 header('Location: Vista_Paciente_Registro.php');
@@ -57,6 +56,7 @@ class Paciente_Controlador
      */
     public function login_Paciente()
     {
+        $LoginFallido = -1;
         if (isset($_POST)) { //comprobar envio de post
             $usuario  = isset($_POST['usuario'])   ? $_POST['usuario']   : false;
             $contrasenia = isset($_POST['contrasenia']) ? $_POST['contrasenia'] : false;
@@ -65,24 +65,19 @@ class Paciente_Controlador
                 $Paciente = new Paciente_Modelo();
                 $IDPaciente = $Paciente->login($usuario, $contrasenia);
 
-                if ($IDPaciente !== -1) {
+                if ($IDPaciente !== $LoginFallido) {
                     $_SESSION['Paciente'] = true;
                     $_SESSION['IdPaciente'] = $IDPaciente;
-
                     header('Location: Vista_Paciente_Principal.php');
                 } else {
-                    echo "No existe el paciente";
                     header("Location: Vista_Paciente_login.php");
                 }
             } else {
-                echo "Usuario incorrecto";
                 header("Location: Vista_Paciente_login.php");
             }
         } else {
-            echo "Usuario incorrecto";
             header("Location: Vista_Paciente_login.php");
         }
     }
-
-
 }
+?>

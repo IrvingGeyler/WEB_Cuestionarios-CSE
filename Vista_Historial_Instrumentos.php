@@ -1,15 +1,11 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Historial de instrumentos</title>
+<?php
+include_once "layouts/head_pagina.php";
+?>
+<title>Historial de instrumentos</title>
 </head>
 
 <body>
     <a href="Vista_Admin_Principal.php"><button>Cancelar</button></a>
-</body>
 
-</html>
+
+<?php include_once "layouts/footer_pagina.php"; ?>
