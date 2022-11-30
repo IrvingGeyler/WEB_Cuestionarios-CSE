@@ -17,14 +17,22 @@ include_once "layouts/head_pagina.php";
 </head>
 
 <body>
-    <form action="" method="post">
-        <label for="" id="respuesta"></label>
-        <input type="text" name="usuario" required placeholder="Nombre de usuario"><br>
-        <input type="password" name="contrasenia" required placeholder="Contraseña"><br>
-        <input type="submit" value="Iniciar sesión">
-    </form>
-    <a href='<?php HOME ?>index.php'><button>Regresar</button></a>
+    <div id="contenido">
 
-<?php
-include_once "layouts/footer_pagina.php";
-?>
+        <div style="border:1px solid black;">
+            <label >Login para administrador</label>
+        </div>
+
+        <div style="border:1px solid black;">
+            <label>Administrador</label>
+            <form action="" method="post">
+               <input type="text" name="usuario" required placeholder="Nombre de usuario"><br>
+                <input type="password" name="contrasenia" required placeholder="Contraseña"><br>
+                <input type="submit" value="Iniciar sesión">
+            </form>
+            <a href='<?php HOME ?>index.php'><button>Cancelar</button></a>
+        </div>
+
+    </div>
+
+<?php include_once "layouts/footer_pagina.php"; ?>

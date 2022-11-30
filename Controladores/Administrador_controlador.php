@@ -9,6 +9,13 @@ class Administrador_Controlador
     {
     }
 
+
+    /**
+     * Metodo para buscar aun admiministrador
+     */
+     
+
+
     /**
      * Metodo para registrar un nuevo administrador
      */

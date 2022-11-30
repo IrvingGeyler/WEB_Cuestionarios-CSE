@@ -3,7 +3,11 @@ session_start();
 
 
 if (!isset($_SESSION['Admin'])) { //Si nunca se creado una sesion de admin
- header("Location: index.php");
+    header("Location: index.php");
+}
+
+if ($_GET) {
+    
 }
 
 include_once "layouts/head_pagina.php";
@@ -40,21 +44,53 @@ include_once "layouts/head_pagina.php";
 
 <body>
 
-    <a href="Vista_Admin_Principal.php"><button>Regresar</button></a>
+    <div id="contenido" style="border: 1px solid black;">
+        <div style="border: 1px solid black;"><label>Creacion de instrumento</label></div>
 
-    <form method="post" action="#" enctype="multipart/form-data">
-        <div>
-            <img class="card-img-top" src="img/avatar.png">
+        <div id="contenido-instrumento">
+             <!--Creacion del instrumentos-->
+            <div id="datos-ints">
 
-            <div class="card-body">
-                <h5 class="card-title">Sube una foto, la imagen puede ser en formato .jpg, o .png </h5>
-                <div class="form-group">
-                    <label for="image">Nueva imagen</label>
-                    <input type="file" class="form-control-file" name="image" id="image">
-                </div>
-                <input type="button" class="upload" value="Subir">
+                <form action="">
+                    <div>
+                        <label for="">Autor</label>
+                        <input type="text" name="Autor" id="Autor">
+                    </div>
+
+                    <div>
+                        <label for="">Titulo</label>
+                        <input type="text" name="Titulo" id="Titulo">
+                    </div>
+
+                    <div>
+                        <label for="">Descripcion</label>
+                        <textarea name="descripcion" id="Descripcion" cols="50" rows="5"></textarea>
+                    </div>
+
+                </form>
+
             </div>
+
+            <!--Subiendo su imagen asociada si es deseada-->
+            <div id="imagen-inst" style="border:1px solid black ;">
+
+                <form method="post" action="#" enctype="multipart/form-data">
+                    <div>
+                        <img class="card-img-top" src="img/avatar.png">
+
+                        <div class="card-body">
+                            <h5 class="card-title">Subir la imagen en formato .jpg, o .png </h5>
+                            <div class="form-group">
+                                <input type="file" class="form-control-file" name="image" id="image">
+                            </div>
+                            <input type="button" class="upload" value="Subir">
+                        </div>
+                    </div>
+                </form>
+            </div>
+
         </div>
-    </form>
+
+    </div>
 
 <?php include_once "layouts/footer_pagina.php"; ?>

@@ -7,16 +7,18 @@ include_once "layouts/head_pagina.php";
 </head>
 
 <body>
-    <div id="Contenido">
+    <div id="Contenido" style="border:1px solid black;">
         <div id="Cont-cabecera">
-            <!--Dirigir a los distintos logins-->
+            <div id="titulo-pag">
+                <label>Cuestionarios-CSE</label>
+            </div>
             <a href='<?php HOME ?>Vista_Paciente_login.php'><button>Paciente</button></a> 
 
             <a href='<?php HOME ?>Vista_Admin_login.php'><button>Administrador</button></a>
         </div>
 
-        <div id="info-pagina">
-            Informacion de la info-pagina
+        <div id="info-pagina" style="border:1px solid black;">
+           <label>Informacion de la info-pagina</label>
         </div>
 
     </div>
