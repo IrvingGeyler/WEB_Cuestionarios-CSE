@@ -79,10 +79,6 @@ class Paciente_Modelo
 
 
     //setters
-    function setId_Paciente($idPaciente)
-    {
-        $this->idPaciente = $idPaciente;
-    }
 
     function setNombre_Paciente($primerNombre)
     {
@@ -134,12 +130,12 @@ class Paciente_Modelo
     public function registrar()
     {   
         $idPaciente = -1;
-        $consulta = "INSERT INTO pacientes(primerNombre,apellidoPaterno,
+        $sql = "INSERT INTO pacientes(primerNombre,apellidoPaterno,
         estadoCivil,fechaNacimiento,sexo,escolaridad,ocupacion, usuario ,contraseña) 
         values ('{$this->getNombre_Paciente()}','{$this->getApellidoPaterno()}','{$this->getEstadoCivil()}',
         '{$this->getFechaNacimiento()}','{$this->getSexo()}','{$this->getEscolaridad()}',
         '{$this->getOcupacion()}','{$this->getUsuario()}','{$this->getContraseña()}')";
-        $registro = $this->baseDatos->query($consulta);
+        $registro = $this->baseDatos->query($sql);
 
         if ($registro) {
             $idPaciente = $this->login($this->getUsuario(),$this->getContraseña());

@@ -10,14 +10,12 @@ class Administrador_Modelo
     private $usuario;
     private $contraseña;
     private $baseDatos;
-    private $Administrador;
 
     //constructor
 
     public function __construct()
     {
         require_once("Conexion.php");
-        $this->Administrador = array();
         $this->baseDatos = BaseDatos::conectar();
     }
 
@@ -49,7 +47,7 @@ class Administrador_Modelo
     }
 
 
-    //getters
+    //setters
     function setPrimerNombre($Nombre)
     {
         $this->primerNombre = $this->baseDatos->real_escape_string($Nombre);
@@ -93,14 +91,14 @@ class Administrador_Modelo
     //Funcion para logear al administrador
     public function login($usuario, $contraseña)
     {
-        $idEncontrado = -1;
+        $AdminEncontrado = false;
         $sql = "SELECT * FROM administradores WHERE usuario = '$usuario' AND contraseña ='$contraseña'";
         $login = $this->baseDatos->query($sql);
         if ($login && $login->num_rows == 1) {
-            $datosAdmin = mysqli_fetch_array($login);
-            return $idEncontrado = $datosAdmin[0];
+            $AdminEncontrado = $login ->fetch_object(); //administrador recuperado
+            return $AdminEncontrado;
         }
-        return $idEncontrado;
+        return $AdminEncontrado;
     }
 }
 ?>

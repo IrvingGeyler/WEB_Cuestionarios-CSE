@@ -6,9 +6,7 @@ if (!isset($_SESSION['Admin'])) { //Si nunca se creado una sesion de admin
     header("Location: index.php");
 }
 
-if ($_GET) {
-    
-}
+$IdAdmin = $_SESSION['IdAdmin'];
 
 include_once "layouts/head_pagina.php";
 ?>
@@ -29,6 +27,8 @@ include_once "layouts/head_pagina.php";
                 success: function(response) {
                     if (response != 0) {
                         $(".card-img-top").attr("src", response);
+                        $('#image').remove();
+                        $('#subir').remove();
                     } else {
                         alert('Formato de imagen incorrecto.');
                     }
@@ -48,14 +48,10 @@ include_once "layouts/head_pagina.php";
         <div style="border: 1px solid black;"><label>Creacion de instrumento</label></div>
 
         <div id="contenido-instrumento">
-             <!--Creacion del instrumentos-->
+            <!--Creacion del instrumentos-->
             <div id="datos-ints">
 
-                <form action="">
-                    <div>
-                        <label for="">Autor</label>
-                        <input type="text" name="Autor" id="Autor">
-                    </div>
+                <form action="Proceso_Instrumento_Creacion.php" method="POST">
 
                     <div>
                         <label for="">Titulo</label>
@@ -63,17 +59,22 @@ include_once "layouts/head_pagina.php";
                     </div>
 
                     <div>
-                        <label for="">Descripcion</label>
-                        <textarea name="descripcion" id="Descripcion" cols="50" rows="5"></textarea>
+                        <label for="">Autor</label>
+                        <input type="text" name="Autor" id="Autor">
                     </div>
 
+                    <div>
+                        <label for="">Descripcion</label>
+                        <textarea name="Descripcion" id="Descripcion" cols="30" rows="10"></textarea>
+                    </div>
+
+                    <input type="hidden" name="idAutor" value=<?= $IdAdmin ?>>
+                    <input type="submit" value="Terminar">
                 </form>
 
             </div>
 
-            <!--Subiendo su imagen asociada si es deseada-->
-            <div id="imagen-inst" style="border:1px solid black ;">
-
+            <div>
                 <form method="post" action="#" enctype="multipart/form-data">
                     <div>
                         <img class="card-img-top" src="img/avatar.png">
@@ -83,14 +84,14 @@ include_once "layouts/head_pagina.php";
                             <div class="form-group">
                                 <input type="file" class="form-control-file" name="image" id="image">
                             </div>
-                            <input type="button" class="upload" value="Subir">
+                            <input type="button" class="upload" value="Subir" id="subir">
                         </div>
                     </div>
                 </form>
             </div>
 
         </div>
-
+        <a href="Vista_Admin_Principal.php"><button>Cancelar</button></a>
     </div>
 
 <?php include_once "layouts/footer_pagina.php"; ?>

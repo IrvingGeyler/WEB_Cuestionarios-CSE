@@ -4,7 +4,9 @@ session_start();
 $Usuario = $_GET['User'];
 
 function logout_Admin()
-{
+{   
+    unset($_SESSION['Nombre']);
+    unset($_SESSION['Usuario']);
     unset($_SESSION['Admin']);
     unset($_SESSION['IdAdmin']);
     session_destroy();
@@ -12,7 +14,7 @@ function logout_Admin()
 }
 
 function logout_Paciente()
-{
+{   
     unset($_SESSION['Paciente']);
     unset($_SESSION['IdPaciente']);
     session_destroy();

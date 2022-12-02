@@ -10,11 +10,6 @@ class Administrador_Controlador
     }
 
 
-    /**
-     * Metodo para buscar aun admiministrador
-     */
-     
-
 
     /**
      * Metodo para registrar un nuevo administrador
@@ -47,19 +42,21 @@ class Administrador_Controlador
      */
     public function login_Admin()
     {
-        $LoginFallido = -1; //ID si no existe
+        $LoginFallido = false; //Admin no existe
         if (isset($_POST)) { //Si fue mandado algo por post
 
             if (isset($_POST['usuario']) && isset($_POST['contrasenia'])) { //comprobar que no esten vacios
 
                 $Admin = new Administrador_Modelo(); //Creacion de modelo para verificar login
-                $usuario = $_POST['usuario'];
+                $nombreUsuario = $_POST['usuario'];
                 $contraseña = $_POST['contrasenia'];
-                $IDAdmin = $Admin->login($usuario, $contraseña);
+                $AdminEncontrado = $Admin->login($nombreUsuario, $contraseña);
 
-                if ($IDAdmin !== $LoginFallido) {//si existe
+                if ( $AdminEncontrado !== $LoginFallido) {//si existe
                     $_SESSION['Admin'] = true;
-                    $_SESSION['IdAdmin'] = $IDAdmin;
+                    $_SESSION['IdAdmin'] = $AdminEncontrado->idAdministrador;
+                    $_SESSION['Usuario'] = $AdminEncontrado->usuario;
+                    $_SESSION['Nombre'] = $AdminEncontrado->primerNombre;
                     header('Location: Vista_Admin_Principal.php');
                 } else {
                     header("Location: Vista_Admin_login.php");
@@ -74,4 +71,5 @@ class Administrador_Controlador
         }
     }
 }
+
 ?>

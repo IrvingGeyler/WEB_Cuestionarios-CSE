@@ -5,8 +5,8 @@ if (is_array($_FILES) && count($_FILES) > 0) {
         || ($_FILES["file"]["type"] == "image/png")
         || ($_FILES["file"]["type"] == "image/gif")
     ) {
-        if (move_uploaded_file($_FILES["file"]["tmp_name"], "img/" . $_FILES['file']['name'])) {
 
+        if (move_uploaded_file($_FILES["file"]["tmp_name"], "img/" . $_FILES['file']['name'])) {
             echo "img/" . $_FILES['file']['name']; //la respuesta
         } else {
             echo 0;
@@ -17,4 +17,6 @@ if (is_array($_FILES) && count($_FILES) > 0) {
 } else {
     echo 0;
 }
+
+
 ?>

@@ -4,6 +4,11 @@ session_start();
 if (!isset($_SESSION['Admin'])) { //Si nunca se creado una sesion de admin
     header("Location: index.php");
 }
+include "Controladores/Instrumento_controlador.php";
+
+$Control = new Instrumento_controlador();
+$instrumentos = $Control->obtenerIntrumentos();
+
 
 include_once "layouts/head_pagina.php";
 ?>
@@ -25,8 +30,8 @@ include_once "layouts/head_pagina.php";
     </div>
 
     <div id="datos_admin" style="border: 1px solid black;">
-        <label for="">Usuario: </label>
-        <label for="">Nombre: </label>
+        <label for="">Usuario: <?php echo $_SESSION['Usuario'] ?> </label>
+        <label for="">Nombre: <?php echo  $_SESSION['Nombre'] ?></label>
     </div>
 
     <div id="Contenido_admin">
@@ -42,6 +47,7 @@ include_once "layouts/head_pagina.php";
                     <tr>
                         <th>ID</th>
                         <th>Nombre del instrumento</th>
+                        <th>Creador</th>
                         <th>Autor</th>
                         <th>Fecha de creacion</th>
                         <th>Eliminar</th>
@@ -51,6 +57,19 @@ include_once "layouts/head_pagina.php";
                 </thead>
                 <!-- Contenido de los instrumentos-->
                 <tbody>
+
+                <?php foreach ($instrumentos as $instrumento) : ?>
+                    <tr>
+                    <td><?php echo $instrumento['idInstrumento'] ?></td>
+                    <td><?php echo $instrumento['titulo'] ?></td>
+                    <td><?php echo $instrumento['primerNombre'] ?></td>
+                    <td><?php echo $instrumento['autor']?></td>
+                    <td><?php echo $instrumento['fechaCreacion']?></td>
+                    <td> <a href="Instrumento_Proceso_Eliminacion.php?Id=<?php echo $instrumento['idInstrumento'] ?>">Eliminar</td>
+                    <td> <a href="">Editar</a></td>
+                    <td> <a href="">VistaPrevia</a></td>
+                    </tr>
+                <?php endforeach ?>
 
                 </tbody>
                 
