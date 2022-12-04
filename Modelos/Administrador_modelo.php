@@ -96,7 +96,6 @@ class Administrador_Modelo
         $login = $this->baseDatos->query($sql);
         if ($login && $login->num_rows == 1) {
             $AdminEncontrado = $login ->fetch_object(); //administrador recuperado
-            return $AdminEncontrado;
         }
         return $AdminEncontrado;
     }

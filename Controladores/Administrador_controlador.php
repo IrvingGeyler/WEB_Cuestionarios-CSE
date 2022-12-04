@@ -3,13 +3,13 @@
 require_once("Modelos/Administrador_modelo.php");
 
 class Administrador_Controlador
-{
+{   
+    private $Admin_modelo;
     //Construcctor
     function __construct()
     {
+        $this->Admin_modelo = new Administrador_Modelo();
     }
-
-
 
     /**
      * Metodo para registrar un nuevo administrador
@@ -25,12 +25,11 @@ class Administrador_Controlador
             $password = isset($_POST['contrasenia']) ? $_POST['contrasenia'] : false;
 
             if ($nombre && $apellido && $usuario && $password) {
-                $nuevoAdmin = new Administrador_Modelo();
-                $nuevoAdmin->setPrimerNombre($nombre);
-                $nuevoAdmin->setApellidoPaterno($apellido);
-                $nuevoAdmin->setUsuario($usuario);
-                $nuevoAdmin->setContraseña($password);
-                $conseguido = $nuevoAdmin->guardar_Admin(); //obtener un resultado
+                $this->Admin_modelo->setPrimerNombre($nombre);
+                $this->Admin_modelo->setApellidoPaterno($apellido);
+                $this->Admin_modelo->setUsuario($usuario);
+                $this->Admin_modelo->setContraseña($password);
+                $conseguido = $this->Admin_modelo->guardar_Admin(); //obtener un resultado
             }
         }
         return $conseguido;
@@ -47,10 +46,9 @@ class Administrador_Controlador
 
             if (isset($_POST['usuario']) && isset($_POST['contrasenia'])) { //comprobar que no esten vacios
 
-                $Admin = new Administrador_Modelo(); //Creacion de modelo para verificar login
                 $nombreUsuario = $_POST['usuario'];
                 $contraseña = $_POST['contrasenia'];
-                $AdminEncontrado = $Admin->login($nombreUsuario, $contraseña);
+                $AdminEncontrado = $this->Admin_modelo->login($nombreUsuario, $contraseña);
 
                 if ( $AdminEncontrado !== $LoginFallido) {//si existe
                     $_SESSION['Admin'] = true;

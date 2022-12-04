@@ -51,7 +51,7 @@ include_once "layouts/head_pagina.php";
                         <th>Autor</th>
                         <th>Fecha de creacion</th>
                         <th>Eliminar</th>
-                        <th>Editar</th>
+                        <th>Editar preguntas</th>
                         <th>Vista previa</th>
                     </tr>
                 </thead>
@@ -66,7 +66,7 @@ include_once "layouts/head_pagina.php";
                     <td><?php echo $instrumento['autor']?></td>
                     <td><?php echo $instrumento['fechaCreacion']?></td>
                     <td> <a href="Instrumento_Proceso_Eliminacion.php?Id=<?php echo $instrumento['idInstrumento'] ?>">Eliminar</td>
-                    <td> <a href="">Editar</a></td>
+                    <td> <a href="Vista_Instrumento_Edicion.php?Id=<?php echo $instrumento['idInstrumento'] ?>">Editar</a></td>
                     <td> <a href="">VistaPrevia</a></td>
                     </tr>
                 <?php endforeach ?>

@@ -1,22 +1,23 @@
 <?php
 
+require_once("Modelos/Instrumento_modelo.php");
+
 class Instrumento_controlador
-{
-    private $baseDatos;
+{    
+    private $Instrumento;
 
-    public function __construct()
-    {
-        require_once("Conexion.php");
-        $this->baseDatos = BaseDatos::conectar();
+    public function __construct() {
+        $this->Instrumento = new Instrumento_Modelo();
     }
 
-    public function obtenerIntrumentos()
-    {   
-        $Instrumentos = null;
-        $sql = "SELECT * from instrumentos INNER JOIN administradores ON instrumentos.idCreador =administradores.idAdministrador";
-        $Instrumentos= $this->baseDatos->query($sql);
-        return  $Instrumentos;
+    /**
+     * Funcion para recuparar los instrumentos
+     */
+    function obtenerIntrumentos(){
+        $instrumentos = $this->Instrumento->obtenerIntrumentos();
+        return $instrumentos;
     }
+
 }
 
 ?>

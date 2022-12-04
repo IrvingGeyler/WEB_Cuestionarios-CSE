@@ -51,11 +51,11 @@ include_once "layouts/head_pagina.php";
             <!--Creacion del instrumentos-->
             <div id="datos-ints">
 
-                <form action="Proceso_Instrumento_Creacion.php" method="POST">
+                <form action="Instrumento_Proceso_Creacion.php" method="POST">
 
                     <div>
                         <label for="">Titulo</label>
-                        <input type="text" name="Titulo" id="Titulo">
+                        <input type="text" name="Titulo" id="Titulo" required>
                     </div>
 
                     <div>

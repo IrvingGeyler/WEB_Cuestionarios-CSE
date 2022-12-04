@@ -94,6 +94,17 @@ class Instrumento_Modelo{
     {
     }
 
+    /**
+     * Metodo para recuperar los instrumentos
+     */
+    function obtenerIntrumentos()
+    {   
+        $Instrumentos = null;
+        $sql = "SELECT * from instrumentos INNER JOIN administradores ON instrumentos.idCreador =administradores.idAdministrador";
+        $Instrumentos= $this->baseDatos->query($sql);
+        return  $Instrumentos;
+    }
+
 
     /**
      * Funcion para guardar un instrumento
