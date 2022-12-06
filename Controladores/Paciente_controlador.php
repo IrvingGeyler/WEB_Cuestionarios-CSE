@@ -8,6 +8,7 @@ class Paciente_Controlador
     //Constructor
     public function __construct()
     {
+        
     }
 
     /**

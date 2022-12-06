@@ -1,13 +1,14 @@
 <?php
 
 class Instrumento_Modelo{
-    private $idInstrumentos;
+    private $idInstrumento;
     private $idCreador;
     private $titulo;
     private $autor;
     private $descripcion;
     private $fechaCreacion;
     private $imagen;
+    private $valido;
     private $baseDatos;
 
 
@@ -21,7 +22,7 @@ class Instrumento_Modelo{
     //getters
     function getIdInstrumento()
     {
-        return $this->idInstrumentos;
+        return $this->idInstrumento;
     }
 
     function getIdCreador()
@@ -55,6 +56,9 @@ class Instrumento_Modelo{
         return $this->imagen;
     }
 
+    function getValido(){
+        return $this->valido;
+    }
 
 
     //setters
@@ -84,32 +88,42 @@ class Instrumento_Modelo{
          $this->fechaCreacion = $fechaCreacion;
     }
 
+    function setValido($valido){
+        $this->valido = $valido;
+    }
 
     function setImagen($imagen)
     {
          $this->imagen = $imagen;
     }
 
-    function buscarInstrumento()
-    {
+
+    /**
+     * Funcion para validar un instrumento
+     */
+    public function validarInstrumento($idInstrumento){
+        $instrumentoValido = false;
+        $sql = "UPDATE instrumentos SET valido = 1 WHERE idInstrumento = '$idInstrumento'";
+        $instrumentoValido = $this->baseDatos->query($sql);
+        return $instrumentoValido;
     }
 
     /**
-     * Metodo para recuperar los instrumentos
+     * Funcion para recuperar los instrumentos
      */
-    function obtenerIntrumentos()
+    public function obtenerIntrumentos()
     {   
-        $Instrumentos = null;
+        $instrumentos = null;
         $sql = "SELECT * from instrumentos INNER JOIN administradores ON instrumentos.idCreador =administradores.idAdministrador";
-        $Instrumentos= $this->baseDatos->query($sql);
-        return  $Instrumentos;
+        $instrumentos= $this->baseDatos->query($sql);
+        return  $instrumentos;
     }
 
 
     /**
      * Funcion para guardar un instrumento
      */
-    function guardarInstrumento(){
+    public function guardarInstrumento(){
         $instrumentoCreado= false;
         $sql = "INSERT INTO instrumentos (idCreador,titulo,autor,descripcion)
         VALUES ({$this->getIdCreador()},'{$this->getTitulo()}','{$this->getAutor()}','{$this->getDescripcion()}')";

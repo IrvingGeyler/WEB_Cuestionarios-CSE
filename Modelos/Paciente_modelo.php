@@ -126,7 +126,9 @@ class Paciente_Modelo
     }
 
 
-    //Funcion para registrar a un paciente
+    /**
+     * Funcion para registrar a un paciente
+     */
     public function registrar()
     {   
         $idPaciente = -1;
@@ -143,12 +145,10 @@ class Paciente_Modelo
         return  $idPaciente;
     }
 
-    //Metodo para bucar al paciente 
-    public function buscarPaciente($idPaciente)
-    {
-    }
 
-    //Funcion para logear
+    /**
+     * Funcion para logear un usuario
+     */
     public function login($usuario, $contraseña)
     {
         $idEncontrado = false;

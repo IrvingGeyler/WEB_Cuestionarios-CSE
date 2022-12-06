@@ -5,7 +5,7 @@ require_once("Modelos/Administrador_modelo.php");
 class Administrador_Controlador
 {   
     private $Admin_modelo;
-    //Construcctor
+    //Constructor
     function __construct()
     {
         $this->Admin_modelo = new Administrador_Modelo();

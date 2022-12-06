@@ -3,6 +3,7 @@ include_once "layouts/head_pagina.php";
 
 $idInstrumento = $_GET['IdInst'];
 $ordenPre = $_GET['ordenPre'];
+$idPregunta = $_GET['IdPregunta'];
 
 ?>
 <title>Creacion de pregunta</title>
@@ -12,9 +13,9 @@ $ordenPre = $_GET['ordenPre'];
 
     <div id="Contenido">
 
-        <a href="Vista_Instrumento_Edicion.php?<?php echo "Id=" . $idInstrumento; ?> "><button>Regresar</button></a>
+        <a href="Vista_Instrumento_Edicion_Preguntas.php?<?php echo "Id=" . $idInstrumento; ?> "><button>Regresar</button></a>
 
-        <form action="Pregunta_proceso_creacion.php" method="post" id="cargaDatosPregunta" >
+        <form action="Pregunta_Proceso_Creacion.php" method="post" id="cargaDatosPregunta" >
 
             <select name="tipo_pregunta" id="tipo_pregunta" required>
                 <option value=-1>Elija un tipo de pregunta</option>
@@ -27,10 +28,11 @@ $ordenPre = $_GET['ordenPre'];
 
             </div>
             <input type="hidden" name="idInstru" value=<?php echo $idInstrumento ?>>
+            <input type="hidden" name="ordenPre" value=<?php echo $ordenPre ?>>
             <input type="submit" value="Crear" name="crear" onclick=" return comprobarTipo()">
         </form>
 
-        <a href="">Duplicar pregunta <?php echo $ordenPre ?></a>
+        <a href= <?php echo 'Pregunta_Proceso_Duplicacion.php?IdInst='.$idInstrumento.'&ordenPre='.$ordenPre.'&IdPregunta='.$idPregunta.'';?>><button>Duplicar pregunta <?php echo $ordenPre ?></button></a>
 
     </div>
 

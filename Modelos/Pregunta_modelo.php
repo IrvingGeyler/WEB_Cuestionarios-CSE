@@ -74,39 +74,87 @@
        {
            $this->requerido = $requerido;
        }
-   
-       function getPregunta(){
-        
-       }
-       
 
        /**
-        * Metodo para requperar las preguntas de un instrumento
+        * Funcion para recuperar pregunta por el id
         */
-       function getPreguntas($idInstru)
+        public function recuperarPreguntaTotal($idPregunta)
+        {
+            $pregunta = false;
+            $sql = "SELECT * FROM preguntas WHERE idPregunta = '$idPregunta'";
+            $pregunta = $this->baseDatos->query($sql)->fetch_object();
+            return $pregunta;
+        }
+
+
+       /**
+        * Funcion para recuperar pregunta de un tipo, idIntrumento y posicion
+        */
+        public function recuperarPregunta($idInstru,$posicion,$tipo)
+        {
+            $pregunta = false;
+            $sql = "SELECT idPregunta FROM preguntas WHERE (idInstru ='$idInstru') and (ordenPregunta ='$posicion') and (tipo='$tipo')";
+            $pregunta = $this->baseDatos->query($sql)->fetch_object();
+            return $pregunta;
+        }
+
+
+       /**
+        * Funcion para guardar la pregunta creada
+        */
+        public function guardarPregunta(){
+            $preguntaCreada= false;
+           $sql = "INSERT INTO preguntas (idInstru,ordenPregunta,tipo,descripcion,requerido) values
+           ({$this->getIdInstrumento()},{$this->getOrdenPregunta()},{$this->getTipo()},'{$this->getDescripcion()}', 
+           {$this->getRequerido()})";
+            $preguntaCreada = $this->baseDatos->query($sql);
+            return $preguntaCreada;
+        }
+       
+       /**
+        * Funcion que devuelve las preguntas de un instrumento en orden
+        */
+       public function recuperar_Orden_Preguntas($idInstrumento){
+         $preguntasOrden = false;
+         $sql = "SELECT idPregunta,ordenPregunta FROM preguntas WHERE idInstru = '$idInstrumento' ORDER BY ordenPregunta ASC";
+         $preguntasOrden = $this->baseDatos->query($sql);
+         return $preguntasOrden;
+       }
+
+
+       /**
+        * Funcion para modificar el orden de una pregunta
+        */
+        public function modificar_orden($idPregunta,$nuevaPosicion){
+         $ordenModficado = false;
+         $sql = "UPDATE preguntas SET ordenPregunta = '$nuevaPosicion' WHERE idPregunta = '$idPregunta'";
+         $ordenModficado= $this->baseDatos->query($sql);
+         return $ordenModficado;
+       }
+
+
+       /**
+        * Funcion para requperar las preguntas de un instrumento
+        */
+        public function getPreguntas($idInstru)
        {    
             $preguntas = false;
-            $sql = "SELECT idPregunta,ordenPregunta,tipo,descripcion,requerido from preguntas where idInstru = '$idInstru'";
+            $sql = "SELECT idPregunta,ordenPregunta,tipo,descripcion,requerido from preguntas where idInstru = '$idInstru' ORDER BY ordenPregunta ASC";
             $preguntas = $this->baseDatos->query($sql);
             return $preguntas;
        }
    
    
        /**
-        * Funcion para guardar un instrumento
+        * Funcion para guardar una pregunta default
         */
-       function guardarPregunta(){
-           $instrumentoCreado= false;
-           $sql = "INSERT INTO instrumentos (idCreador,titulo,autor,descripcion)";
-            $registro = $this->baseDatos->query($sql);
-            if ($registro) {
-                $instrumentoCreado = true;
-            }
-            return $instrumentoCreado;
+        public function guardarPreguntaDefault($idInstru){
+           $preguntaCreada= false;
+           $sql = "INSERT INTO preguntas (idInstru,ordenPregunta,tipo,descripcion,requerido) values
+            ($idInstru,1,0,'Ingresa tu edad',1)";
+            $preguntaCreada = $this->baseDatos->query($sql);
+            return $preguntaCreada;
        }
 
-
-    }
-
- 
+    } 
 ?>

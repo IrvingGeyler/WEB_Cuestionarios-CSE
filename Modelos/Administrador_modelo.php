@@ -68,14 +68,9 @@ class Administrador_Modelo
         $this->contraseña = $this->baseDatos->real_escape_string($Contraseña);
     }
 
-
-    //Funcion para buscar la inforamacion del administrador
-    function getAdministrador()
-    {
-    }
-
-
-    //funcion para registrar a un administrador
+    /**
+     * funcion para registrar a un administrador
+     */
     public function guardar_Admin()
     {
         $guardado = false;
@@ -88,7 +83,9 @@ class Administrador_Modelo
 
 
 
-    //Funcion para logear al administrador
+    /**
+     * Funcion para logear al administrador
+     */
     public function login($usuario, $contraseña)
     {
         $AdminEncontrado = false;

@@ -37,7 +37,10 @@ include_once "layouts/head_pagina.php";
                     <th>Tipo</th>
                     <th>Descripcion</th>
                     <th>Requerido</th>
-                    <th>Acciones</th>
+                    <th>Agregar</th>
+                    <th>Editar</th>
+                    <th>Eliminar</th>
+
                 </tr>
             </thead>
             <!-- Preguntas -->
@@ -63,7 +66,7 @@ include_once "layouts/head_pagina.php";
                     }else{
                         echo '<td> Si </td>';
                     }
-                 echo '<td> <a href="Vista_Pregunta_Creacion.php?IdInst='.$idInstrumento.'&ordenPre='.$Pregunta['ordenPregunta'].'">Agregar</a> </td>';
+                 echo '<td> <a href="Vista_Pregunta_Creacion.php?IdInst='.$idInstrumento.'&ordenPre='.$Pregunta['ordenPregunta'].'&IdPregunta='.$Pregunta['idPregunta'].'"><button>Agregar</button></a></td>';
                 ?>
                 </tr>
                 
@@ -89,8 +92,9 @@ include_once "layouts/head_pagina.php";
                     <?php else:?>
                         <td>Si</td>
                     <?php endif ?>
-                    
-                    <td>Agregar</td>
+                    <td> <a href= <?php echo 'Vista_Pregunta_Creacion.php?IdInst='.$idInstrumento.'&ordenPre='.$Pregunta['ordenPregunta'].'&IdPregunta='.$Pregunta['idPregunta'].'';?>><button>Agregar</button></a></td>
+                    <td> <a href= <?php echo 'Vista_Pregunta_Edicion.php?IdInst='.$idInstrumento.'&IdPregunta='.$Pregunta['idPregunta'].'&tipo='.$Pregunta['tipo'].'';?>><button>Editar</button></a></td>
+                    <td> <a href= <?php echo 'Pregunta_Proceso_Eliminacion.php?IdInst='.$idInstrumento.'&posicion='.$Pregunta['ordenPregunta'].'&IdPregunta='.$Pregunta['idPregunta'].'';?>><button>Eliminar</button></a></td>
                     </tr>
                 <?php endwhile ?>
                 </tbody>

@@ -51,8 +51,10 @@ include_once "layouts/head_pagina.php";
                         <th>Autor</th>
                         <th>Fecha de creacion</th>
                         <th>Eliminar</th>
+                        <th>Editar</th>
                         <th>Editar preguntas</th>
                         <th>Vista previa</th>
+                        <th>Validar</th>
                     </tr>
                 </thead>
                 <!-- Contenido de los instrumentos-->
@@ -65,9 +67,21 @@ include_once "layouts/head_pagina.php";
                     <td><?php echo $instrumento['primerNombre'] ?></td>
                     <td><?php echo $instrumento['autor']?></td>
                     <td><?php echo $instrumento['fechaCreacion']?></td>
-                    <td> <a href="Instrumento_Proceso_Eliminacion.php?Id=<?php echo $instrumento['idInstrumento'] ?>">Eliminar</td>
-                    <td> <a href="Vista_Instrumento_Edicion.php?Id=<?php echo $instrumento['idInstrumento'] ?>">Editar</a></td>
-                    <td> <a href="">VistaPrevia</a></td>
+
+                    <?php  if ($instrumento['valido']==0) :?>
+                        <td><a href="Instrumento_Proceso_Eliminacion.php?Id=<?php echo $instrumento['idInstrumento'] ?>">Eliminar</td>
+                        <td>Editar</td>
+                        <td>No disponible</td>
+                        <td>No disponible</td>
+                        <td><a href="Instrumento_Proceso_Validacion.php?Id=<?php echo $instrumento['idInstrumento'] ?>"> <button>Validar</button></a></td>
+                    <?php  else:?>
+                        <td><a href="Instrumento_Proceso_Eliminacion.php?Id=<?php echo $instrumento['idInstrumento'] ?>">Eliminar</td>
+                        <td>Editar descripciones no disponible</td>
+                        <td><a href="Vista_Instrumento_Edicion_Preguntas.php?Id=<?php echo $instrumento['idInstrumento'] ?>">Editar preguntas</a></td>
+                        <td><a href="">VistaPrevia</a></td>
+                        <td>Validado</td>
+                    <?php  endif;?>
+
                     </tr>
                 <?php endforeach ?>
 
